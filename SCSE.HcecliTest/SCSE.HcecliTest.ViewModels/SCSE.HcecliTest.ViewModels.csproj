@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<PackageReference Include="SCSE.Framework.Application" Version="2.0.0" />
+		<PackageReference Include="SCSE.Framework.Application.Core" Version="2.0.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<PackageReference Include="SCSE.Framework.Application" Version="2.0.9" />
+		<PackageReference Include="SCSE.Framework.Application.Core" Version="2.0.9" />
+		<PackageReference Include="SCSE.Framework.DynamicCore.Application" Version="2.0.9" />
+		<PackageReference Include="SCSE.Framework.Common.Components.Blz" Version="2.0.9" />
+		<PackageReference Include="SCSE.Framework.Common.HttpClientHelpers" Version="2.0.0" />
+		<PackageReference Include="SCSE.Framework.Jwt" Version="2.0.0" />
+		<PackageReference Include="SCSE.Framework.Security.Model" Version="2.0.0" />
+		<PackageReference Include="SCSE.Framework.Storage.Model" Version="2.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="SCSE.DynamicForms.Module.Domain">
+	    <HintPath>..\References\SCSE.DynamicForms.Module.Domain.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+	
+</Project>

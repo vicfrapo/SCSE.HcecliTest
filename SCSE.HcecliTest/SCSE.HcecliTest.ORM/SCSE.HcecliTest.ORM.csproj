@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="IBM.EntityFrameworkCore" Version="6.0.0.200" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<PackageReference Include="Npgsql" Version="6.0.3" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.3" />
+		<PackageReference Include="Oracle.EntityFrameworkCore" Version="6.21.5" />
+		<PackageReference Include="Servinte.Operations.DataAccess.Core" Version="1.0.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\SCSE.HcecliTest.Domain\SCSE.HcecliTest.Domain.csproj" />
+	  <ProjectReference Include="..\SCSE.HcecliTest.Dtos\SCSE.HcecliTest.Dtos.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="SCSE.DynamicForms.Module.Domain">
+	    <HintPath>..\References\SCSE.DynamicForms.Module.Domain.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,103 @@
+﻿@page "/TestComponent"
+@namespace SCSE.HcecliTest.Module
+@using SCSE.HcecliTest.ORM
+@inject ApplicationContext appContext
+@using SCSE.DynamicForms.Module.Domain
+@using SCSE.Framework.Application.Core
+@using SCSE.Framework.Common.Components.Blz
+
+<MudCard>
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudText>Componentes genericos</MudText>
+        </CardHeaderContent>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudGrid>
+            <MudItem>
+                <NumericComponent @ref="numericComponent" @bind-NumericValue="numericComponentValue" Label="Componente Numerico" Code="PRARSI" Name="Numerico" IsControlVariable="true" Context="ContextTemplate"></NumericComponent>
+            </MudItem>
+            <MudItem>
+                <TextComponent @ref="textComponent" @bind-Value="textComponentValue" Label="Componente Texto" Code="PRU001" Name="Texto" IsControlVariable="false" Context="ContextTemplate"></TextComponent>
+            </MudItem>
+            <MudItem>
+                <ValueListComponent @ref="selectionListComponent" @bind-SelectedItem="selectionListComponentValue" Code="PRU002" Name="Lista seleccion unica" Context="@ContextTemplate" ListType="ValueListType.SelectionList" SourceType="SourceDataType.Query" Query="@SearchQuery" />
+            </MudItem>
+            <MudItem>
+                <ValueListComponent @ref="checkBoxListComponent" @bind-SelectedOptions="checkBoxListComponentValue" Code="PRU003" Name="Lista multiple seleccion" Context="@ContextTemplate" ListType="ValueListType.CheckBoxList" SourceType="SourceDataType.Query" Query="@SearchQuery" Required="true" />
+            </MudItem>
+            <MudItem>
+                <ValueListComponent @ref="checkBoxComponent" @bind-SelectedOptions="checkBoxComponentValue" Code="PRU004" Name="Cajas de chequeo" Context="@ContextTemplate" ListType="ValueListType.CheckBox" SourceType="SourceDataType.Query" Query="@SearchQuery2" />
+            </MudItem>
+            <MudItem>
+                <ValueListComponent @ref="radioButtonComponent" @bind-SelectedItem="radioButtonComponentValue" Code="PRU005" Name="RadioBotones" Context="@ContextTemplate" ListType="ValueListType.RadioButton" SourceType="SourceDataType.Query" Query="@SearchQuery2" />
+            </MudItem>
+            <MudItem>
+                <SearchComponent @ref="searchComponent" Code="PRU006" Name="Buscador" Context="@ContextTemplate" Query="@SearchQuery"></SearchComponent>
+            </MudItem>
+            <MudItem>
+                <DateTimeComponent @ref="dateTimeComponent" @bind-DateTimeValue="DateTimeValue" Code="PRU007" Context="@ContextTemplate" DateType="DateTimeType.DateTime" />
+            </MudItem>
+            <MudItem>
+                <SwitchComponent Code="PRU008" @ref="switchComponent" @bind-Checked="switchComponentValue" Context="@ContextTemplate" />
+            </MudItem>
+
+        </MudGrid>
+    </MudCardContent>
+    <MudCardActions>
+        <MudButton OnClick="SetValue" Variant="Variant.Filled" Color="Color.Primary">Asignar Valor</MudButton>
+        <MudButton OnClick="Validate" Variant="Variant.Filled" Color="Color.Primary">Validate</MudButton>
+        <MudButton OnClick="Disable" Variant="Variant.Filled" Color="Color.Primary">Deshabilitar</MudButton>
+    </MudCardActions>
+</MudCard>
+
+
+
+<MudCard>
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudText>Valores bindings</MudText>
+        </CardHeaderContent>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudGrid>
+            <MudItem>
+                <MudTextField T="string" Variant="Variant.Outlined" Value="@numericComponentValue" Margin="Margin.Dense"></MudTextField>
+            </MudItem>
+            <MudItem>
+                <MudTextField T="string" Variant="Variant.Outlined" Value="@textComponentValue" Margin="Margin.Dense"></MudTextField>
+            </MudItem>
+            <MudItem>
+                <MudTextField T="string" Variant="Variant.Outlined" Value="@selectionListComponentValue?.Code" Margin="Margin.Dense"></MudTextField>
+            </MudItem>
+            <MudItem>
+                @if (checkBoxListComponentValue != null && checkBoxListComponentValue.Any())
+                {
+                    foreach (var item in checkBoxListComponentValue)
+                    {
+                        <MudText>@item.Code</MudText>
+                    }
+                }
+            </MudItem>
+            <MudItem>
+                @if (checkBoxComponentValue != null && checkBoxComponentValue.Any())
+                {
+                    foreach (var item in checkBoxComponentValue)
+                    {
+                        <MudText>@item.Code</MudText>
+                    }
+                }
+            </MudItem>
+            <MudItem>
+                <MudTextField T="string" Variant="Variant.Outlined" Value="@radioButtonComponentValue?.Code" Margin="Margin.Dense"></MudTextField>
+            </MudItem>
+            <MudItem>
+                <MudTextField T="DateTime?" Variant="Variant.Outlined" Value="@DateTimeValue" Margin="Margin.Dense"></MudTextField>
+            </MudItem>
+            <MudItem>
+                <MudTextField T="string" Variant="Variant.Outlined" Value="@switchComponentValue" Margin="Margin.Dense"></MudTextField>
+            </MudItem>
+
+        </MudGrid>
+    </MudCardContent>
+</MudCard>

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="SCSE.Framework.Application.Core" Version="2.0.1" />
+		<PackageReference Include="SCSE.Framework.Searches.Model" Version="2.0.0" />
+		<PackageReference Include="System.Resources.ResourceManager" Version="4.3.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="SCSE.DynamicForms.Components">
+	    <HintPath>..\References\SCSE.DynamicForms.Components.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.DynamicForms.Module.Domain">
+	    <HintPath>..\References\SCSE.DynamicForms.Module.Domain.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,88 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="6.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.2" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+		<PackageReference Include="MudBlazor" Version="6.0.10" />
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<PackageReference Include="SCSE.Framework.Application" Version="2.0.9" />
+		<PackageReference Include="SCSE.Framework.Application.Core" Version="2.0.9" />
+		<PackageReference Include="SCSE.Framework.DynamicCore.Application" Version="2.0.9" />
+		<PackageReference Include="SCSE.Framework.Common.Components.Blz" Version="2.0.9" />
+		<PackageReference Include="SCSE.Framework.Jwt" Version="2.0.0" />
+		<PackageReference Include="SCSE.Framework.Security.Model" Version="2.0.0" />
+		<PackageReference Include="SCSE.Framework.Storage.Model" Version="2.0.0" />
+		<PackageReference Include="SCSE.Framework.Common.HttpClientHelpers" Version="2.0.0" />
+		<PackageReference Include="Serilog" Version="2.10.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\SCSE.HcecliTest\SCSE.HcecliTest.Components\SCSE.HcecliTest.Components.csproj" />
+	  <ProjectReference Include="..\SCSE.HcecliTest\SCSE.HcecliTest.ORM\SCSE.HcecliTest.ORM.csproj" />
+	  <ProjectReference Include="..\SCSE.HcecliTest\SCSE.HcecliTest.ViewModels\SCSE.HcecliTest.ViewModels.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="SCSE.DynamicForms.Components">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.DynamicForms.Components.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.DynamicForms.Module.Domain">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.DynamicForms.Module.Domain.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.DynamicForms.Module.Dtos">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.DynamicForms.Module.Dtos.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.DynamicForms.Module.ORM">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.DynamicForms.Module.ORM.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.DynamicForms.Module.Shared">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.DynamicForms.Module.Shared.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.DynamicForms.Module.ViewModels">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.DynamicForms.Module.ViewModels.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.Framework.Application">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.Framework.Application.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.Framework.Application.Core">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.Framework.Application.Core.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.Framework.AuditScse.Model">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.Framework.AuditScse.Model.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.Framework.Common.Components.Blz">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.Framework.Common.Components.Blz.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.Framework.Common.Exports">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.Framework.Common.Exports.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.Framework.Common.HttpClientHelpers">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.Framework.Common.HttpClientHelpers.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.Framework.DynamicCore.Application">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.Framework.DynamicCore.Application.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.Framework.Jwt">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.Framework.Jwt.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.Framework.Searches.Model">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.Framework.Searches.Model.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.Framework.Security.Model">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.Framework.Security.Model.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SCSE.Framework.Storage.Model">
+	    <HintPath>..\SCSE.HcecliTest\References\SCSE.Framework.Storage.Model.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+</Project>

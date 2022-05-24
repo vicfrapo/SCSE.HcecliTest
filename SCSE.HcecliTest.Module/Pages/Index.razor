@@ -1,0 +1,58 @@
+﻿@page "/"
+@using SCSE.HcecliTest.ORM
+@inject ApplicationContext appContext
+@using SCSE.DynamicForms.Module.Domain
+@using SCSE.Framework.Application.Core
+@using SCSE.Framework.Common.Components.Blz
+@using SCSE.DynamicForms.Components
+@namespace SCSE.HcecliTest.Module.Pages
+
+<MudAppBar Color="Color.Primary" Fixed="false" Elevation="0">
+    <MudText Typo="Typo.h4">Encabezado del paciente</MudText>
+</MudAppBar>
+
+<MudGrid>
+    <MudItem xs="2">
+        <MudPaper Class="d-inline-flex" Elevation="0">
+            <MudNavMenu Class="mud-width-full">
+                <MudText Typo="Typo.h6" Class="px-4">Zona de filtro</MudText>
+            </MudNavMenu>
+        </MudPaper>
+    </MudItem>
+
+    <MudItem xs="10">
+        <MudDynamicTabs Elevation="4" @ref="tabs" Rounded="true" KeepPanelsAlive="true" ApplyEffectsToContainer="true" PanelClass="px-4 py-6" CloseTab="@((panel) => CloseTabCallback(panel))" @bind-ActivePanelIndex="IndexTab" CloseIconToolTip="Cerrar">
+            @if (Templates != null)
+            {
+                @foreach (var item in Templates)
+                {
+                    <MudTabPanel Tag="@item.Code" ID="@item.Code" Text="@item.Description">
+                        <DynamicFormRenderComponent Code="@item.Code" Program="chppla" @ref="@item.Template" TemplateCode="@item.Code" Context="Context" LoadPartialData="true" />
+                    </MudTabPanel>
+                }
+            }
+        </MudDynamicTabs>
+    </MudItem>
+</MudGrid>
+
+
+<MudAppBar Bottom="true" Fixed="true" Elevation="1" Dense="true" Color="Color.Primary">
+    <MudMenu Label="Componentes" MaxHeight="500" FullWidth="true" Style="width: 300px;" Variant="Variant.Filled" Color="Color.Info">
+        @if (TemplatesMenuList != null)
+        {
+            @foreach (var item in TemplatesMenuList)
+            {
+                <MudMenuItem OnClick="(()=> OnClickMenu(item))">
+                    <span class="d-flex">
+                        <MudIcon Icon="@Icons.Material.Filled.ChevronRight" /> @item.Value
+                    </span>
+                </MudMenuItem>
+            }
+        }
+    </MudMenu>
+    <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="Validate">Validar</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="SavePartial">Guardar parcial</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="Test">Test</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="Test2">Plantilla prueba 2</MudButton>
+
+</MudAppBar>

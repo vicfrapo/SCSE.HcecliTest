@@ -1,0 +1,4 @@
+﻿/*Da el ancho total al componente TextComponent*/
+.mud-tooltip-root {
+    width: auto;
+}

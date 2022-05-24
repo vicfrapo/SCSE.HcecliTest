@@ -1,0 +1,273 @@
+﻿/***** drop-zone ******/
+
+.drop-zone {
+    display: flex !important;
+    min-height: 50px;
+    align-items: center;
+    border: 0.5px solid var(--mud-palette-background);
+    padding: 0px 5px 3px 5px;
+    z-index: 1;
+}
+
+    .drop-zone:hover {
+        border: 1.8px dashed var(--mud-palette-primary);
+        border-radius: 6px;
+        z-index: 2;
+    }
+
+    .drop-zone.no-drop {
+        border: 1.8px dashed var(--mud-palette-primary);
+    }
+
+    .drop-zone.can-drop {
+        border: 1.8px dashed green;
+    }
+
+    .drop-zone .mud-input-control.mud-input-input-control {
+        margin-top: 0;
+    }
+
+    .drop-zone.empty-cell {
+        background-color: #DEDEDE;
+        border-radius: 6px;
+    }
+
+    .drop-zone:not(:hover).hold-cell {
+        border: 1px solid #DEDEDE;
+        border-radius: 6px;
+    }
+
+    .drop-zone.hold-cell.is-selected {
+        border: 1px solid var(--mud-palette-error);
+        border-radius: 6px;
+    }
+
+    /*.drop-zone .mud-input-control > .mud-input-control-input-container > div.mud-input.mud-input-text {
+            margin-top: 0;
+    }*/
+
+/***** Menu Zone ******/
+
+.mud-badge-root.drop-zone .menu-zone {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.2s linear,opacity 0.2s linear;
+}
+
+.mud-badge-wrapper .button-resize {
+    position: absolute;
+    left: calc(100% - 9px);
+    width: 20px;
+    height: 20px;
+    z-index: 5;
+}
+
+.mud-badge-root:hover.drop-zone .menu-zone {
+    visibility: visible;
+    opacity: 1;
+    z-index: 4 !important;
+}
+
+.menu-zone > .mud-badge.mud-badge-icon .mud-icon-badge {
+    font-size: 16px;
+    margin-inline-start: -4px;
+    margin-top: -2px;
+}
+
+.menu-zone > .mud-badge {
+    font-size: 16px;
+}
+
+.mud-badge-wrapper.menu-zone {
+    pointer-events: all;
+}
+
+/*.menu-zone .mud-fab-size-small {
+    width: 30px;
+    height: 30px;
+    min-height: unset;
+}*/
+
+/*.menu-zone-button-focus:hover {*/
+/*transform: scale(1.2);*/
+/*outline: solid 1px black;
+}*/
+
+/***** Parameters Menu ******/
+
+.parameters-menu {
+    align-items: center !important;
+}
+
+    .parameters-menu::-webkit-scrollbar-track {
+        background: #ffffff;
+    }
+
+    .parameters-menu::-webkit-scrollbar-thumb {
+        background: #DEDEDE;
+    }
+
+        .parameters-menu::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+    .parameters-menu input {
+        padding: 4px !important;
+        /*display: flex !important;
+        border: 1px solid #75868a;
+        min-height: 30px;
+        align-items: center;
+        margin-top: -1px;
+        margin-left: -1px;
+        padding: 5px 5px 5px 5px;*/
+    }
+
+    .parameters-menu .mud-input > input.mud-input-root, div.mud-input-slot.mud-input-root {
+        background-color: aliceblue;
+        border-radius: 5px;
+        font-size: 0.8em;
+    }
+
+        .parameters-menu .mud-input > input.mud-input-root.mud-select-input, div.mud-input-slot.mud-input-root.mud-select-input {
+            border-radius: 4px 0 0 4px;
+        }
+
+    .parameters-menu svg {
+        background-color: aliceblue;
+    }
+
+    .parameters-menu .mud-input-adornment {
+        height: unset;
+        /*border-radius: 0 5px 0 5px;*/
+    }
+
+    .parameters-menu .mud-input > input.mud-input-root, div.mud-input-slot.mud-input-root {
+        padding: 3px 0 5px;
+    }
+
+    .parameters-menu .mud-input-control > .mud-input-control-input-container > div.mud-input.mud-input-text {
+        margin-top: 0;
+    }
+
+    .parameters-menu .mud-input.mud-input-outlined .mud-input-outlined-border {
+        border-radius: 5px;
+    }
+
+    .parameters-menu .mud-input-control {
+        margin-top: 0;
+    }
+
+.mud-icon-button-drawer-toggle.mud-icon-button {
+    display: flex;
+    position: absolute;
+    top: calc(50% - 10px);
+    height: 50px;
+    width: 20px;
+    border-top-left-radius: unset !important;
+    border-bottom-left-radius: unset !important;
+    left: -3px;
+    overflow: visible;
+}
+
+    /*.mud-drawer-fixed-scse.mud-drawer-pos-right .mud-drawer-content {
+        position: fixed;
+    }*/
+
+    /*.mud-drawer-fixed-scse.mud-drawer-pos-right .mud-badge.mud-badge-overlap {
+        right: calc(100% - 10px);
+    }*/
+ 
+/***** Components Menu ******/
+
+.components-menu .mud-tab {
+    justify-content: unset;
+}
+
+.components-menu .mud-tabs {
+    height: 350px;
+    text-transform: unset;
+}
+
+.components-menu .mud-tabs-panels.mud-tabs-vertical {
+    display: block;
+}
+
+.components-menu .mud-icon-button {
+    padding: 0 !important;
+}
+
+/*.components-menu.mud-dialog {
+    background-color: var(--mud-palette-primary);
+    color: var(--mud-palette-white);
+}*/
+
+.components-menu .mud-icon-button {
+    color: unset;
+}
+
+/*    .mud-input.mud-input-outlined .mud-input-outlined-border {
+        background-color: antiquewhite;
+        color: black;
+    }*/
+
+.mud-toolbar-dense-scse.mud-toolbar-dense {
+    height: 34px;
+}
+
+/***** Expansion Panels - Designer *****/
+
+.mud-expansion-panels-designer-scse .mud-expand-panel .mud-expand-panel-header {
+    padding: 5px 13px;
+}
+
+.mud-expansion-panels-designer-scse .mud-expand-panel .mud-expand-panel-content {
+    padding: 8px;
+}
+
+/*.mud-expansion-panels-designer-scse .group_menu {
+    left: calc(50%);
+}*/
+
+/**** MudCard - Designer ****/
+
+.mud-card-designer-scse .mud-card-header {
+    padding: 5px 13px;
+}
+
+.mud-card-designer-scse .mud-card-content {
+    padding: 8px;
+}
+
+/*** MudBadge ***/
+
+.mud-badge-wrapper.group-menu-panel {
+    pointer-events: none;
+}
+
+.mud-badge-wrapper .group-menu-items {
+    pointer-events: all;
+    border-bottom-right-radius: 14px;
+    border-bottom-left-radius: 14px;
+    /*color: var(--mud-palette-white);*/
+    background-color: #DEDEDE;
+    /*background-color: var(--mud-palette-drawer-background);*/
+    /*background-color: var(--mud-palette-appbar-background);*/
+}
+
+.button.mud-icon-button .group-menu-items {
+    padding: 5px;
+}
+
+.mud-main-content-designer-scse {
+    margin-top: var(--mud-appbar-height);
+    margin-left: 0;
+    margin-right: calc(var(--mud-drawer-width-mini-right));
+    margin-bottom: calc(var(--mud-appbar-height) - var(--mud-appbar-height) / var(--ratio-appbar-dense));
+}
+
+.mud-main-content-render-scse {
+    margin-top: var(--mud-appbar-height);
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: calc(var(--mud-appbar-height) - var(--mud-appbar-height) / var(--ratio-appbar-dense));
+}
