@@ -1,27 +1,28 @@
-﻿@page "/"
-@using SCSE.HcecliTest.ORM
+﻿@namespace SCSE.HcecliTest.Module.Pages
+@page "/"
 @inject ApplicationContext appContext
+
+@using SCSE.HcecliTest.ORM
 @using SCSE.DynamicForms.Module.Domain
 @using SCSE.Framework.Application.Core
 @using SCSE.Framework.Common.Components.Blz
 @using SCSE.DynamicForms.Components
-@namespace SCSE.HcecliTest.Module.Pages
 
-<MudAppBar Color="Color.Primary" Fixed="false" Elevation="0">
-    <MudText Typo="Typo.h4">Encabezado del paciente</MudText>
-</MudAppBar>
+<MudPaper MinHeight="100px" Class="d-flex align-center pa-5 mb-2" Elevation="0" Outlined="true">
+    <MudText Typo="Typo.h4">Datos del paciente</MudText>
+</MudPaper>
 
-<MudGrid>
+<MudGrid Spacing="1" Class="mb-2">
     <MudItem xs="2">
-        <MudPaper Class="d-inline-flex" Elevation="0">
-            <MudNavMenu Class="mud-width-full">
-                <MudText Typo="Typo.h6" Class="px-4">Zona de filtro</MudText>
-            </MudNavMenu>
+        <MudPaper Class="d-flex mud-height-full pa-1 justify-center" Elevation="0" Outlined="true" MinHeight="70vh">
+            <MudText Typo="Typo.h6">Zona de filtros</MudText>
         </MudPaper>
     </MudItem>
 
     <MudItem xs="10">
-        <MudDynamicTabs Elevation="4" @ref="tabs" Rounded="true" KeepPanelsAlive="true" ApplyEffectsToContainer="true" PanelClass="px-4 py-6" CloseTab="@((panel) => CloseTabCallback(panel))" @bind-ActivePanelIndex="IndexTab" CloseIconToolTip="Cerrar">
+        <MudDynamicTabs @ref="tabs" Elevation="0" Outlined="true" Rounded="true" KeepPanelsAlive="true"
+            ApplyEffectsToContainer="true" PanelClass="px-4 py-6" CloseTab="@((panel) => CloseTabCallback(panel))" 
+            @bind-ActivePanelIndex="IndexTab" CloseIconToolTip="Cerrar">
             @if (Templates != null)
             {
                 @foreach (var item in Templates)
@@ -35,9 +36,8 @@
     </MudItem>
 </MudGrid>
 
-
-<MudAppBar Bottom="true" Fixed="true" Elevation="1" Dense="true" Color="Color.Primary">
-    <MudMenu Label="Componentes" MaxHeight="500" Dense="true" FullWidth="true" Style="width: 300px;" Variant="Variant.Filled" Color="Color.Info">
+<MudPaper Elevation="0" Outlined="true" Class="pa-1">
+    <MudMenu Label="Componentes" MaxHeight="500" FullWidth="true" Style="width: 300px;" Variant="Variant.Filled" Color="Color.Info">
         @if (TemplatesMenuList != null)
         {
             @foreach (var item in TemplatesMenuList)
@@ -54,4 +54,8 @@
     <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="SavePartial">Guardar parcial</MudButton>
     <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="Test">Test</MudButton>
     <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="Test2">Plantilla prueba 2</MudButton>
-</MudAppBar>
+</MudPaper>
+
+@*<MudAppBar Bottom="true" Fixed="true" Elevation="1" Dense="true" Color="Color.Primary">
+
+</MudAppBar>*@

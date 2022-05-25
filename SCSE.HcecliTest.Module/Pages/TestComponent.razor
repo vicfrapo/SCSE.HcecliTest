@@ -1,7 +1,8 @@
-﻿@page "/TestComponent"
-@namespace SCSE.HcecliTest.Module
-@using SCSE.HcecliTest.ORM
+﻿@namespace SCSE.HcecliTest.Module
+@page "/TestComponent"
 @inject ApplicationContext appContext
+
+@using SCSE.HcecliTest.ORM
 @using SCSE.DynamicForms.Module.Domain
 @using SCSE.Framework.Application.Core
 @using SCSE.Framework.Common.Components.Blz
@@ -15,7 +16,7 @@
     <MudCardContent>
         <MudGrid>
             <MudItem>
-                <NumericComponent @ref="numericComponent" @bind-NumericValue="numericComponentValue" Label="Componente Numerico" Code="PRARSI" Name="Numerico" IsControlVariable="true" Context="ContextTemplate"></NumericComponent>
+                @*<NumericComponent @ref="numericComponent" @bind-NumericValue="numericComponentValue" Label="Componente Numerico" Code="PRARSI" Name="Numerico" IsControlVariable="true" Context="ContextTemplate"></NumericComponent>*@
             </MudItem>
             <MudItem>
                 <TextComponent @ref="textComponent" @bind-Value="textComponentValue" Label="Componente Texto" Code="PRU001" Name="Texto" IsControlVariable="false" Context="ContextTemplate"></TextComponent>

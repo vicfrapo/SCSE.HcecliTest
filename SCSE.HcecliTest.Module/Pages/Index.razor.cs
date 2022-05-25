@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿namespace SCSE.HcecliTest.Module.Pages;
+
+using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using SCSE.DynamicForms.Components;
 using SCSE.DynamicForms.Module.Domain;
@@ -6,8 +8,6 @@ using SCSE.Framework.Searches.Model;
 using SCSE.HcecliTest.Domain;
 using SCSE.HcecliTest.ViewModels;
 using System.Linq;
-
-namespace SCSE.HcecliTest.Module.Pages;
 
 public partial class Index
 {

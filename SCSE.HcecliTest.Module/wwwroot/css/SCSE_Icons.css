@@ -18,6 +18,87 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+}
+
+.icon-AnularSolicitud:before {
+    content: "\e97e";
+
+}
+
+.icon-Periodicas:before {
+    content: "\e97d";
+
+}
+
+.icon-Descargar:before {
+    content: "\e97f";
+
+}
+
+.icon-Registro:before {
+    content: "\e980";
+    
+}
+
+.icon-RegistroH:before {
+    content: "\e981";
+    
+}
+
+.icon-Autorizacion:before {
+    content: "\e982";
+    
+}
+
+.icon-AutorizacionH:before {
+    content: "\e98d";
+    
+}
+
+.icon-ModificarS:before {
+    content: "\e98e";
+    
+}
+
+.icon-ModificarSH:before {
+    content: "\e98f";
+    
+}
+
+.icon-Enfermeria:before {
+    content: "\e990";
+    
+}
+
+.icon-CitaGrupalInd:before {
+    content: "\e991";
+    
+}
+
+.icon-HSeguimientoPAE:before {
+    content: "\e992";
+    
+}
+
+.icon-SeguimientoPAE:before {
+    content: "\e993";
+    
+}
+
+.icon-MoverCita:before {
+    content: "\e994";
+    
+}
+
+.icon-PegarCita:before {
+    content: "\e995";
+    
+}
+
+.icon-TableroMenu:before {
+    content: "\e996";
+    
+}
 .icon-FlechaAbajo:before {
     content: "\e900";
 }
@@ -559,7 +640,18 @@
 }
 
 .icon-AnularSolicitud:before {
-    content: "\e97e";
+}
+
+.icon-LineaMigaPan:before {
+    content: "\e99c";
+}
+
+.icon-SignosVitales:before {
+    content: "\e99d";
+}
+
+.icon-ClasificacionTriage:before {
+    content: "\e99e";
 }
 
 .icon-Periodicas:before {
@@ -640,18 +732,7 @@
 
 .icon-Importar:before {
     content: "\e99b";
-}
-
-.icon-LineaMigaPan:before {
-    content: "\e99c";
-}
-
-.icon-SignosVitales:before {
-    content: "\e99d";
-}
-
-.icon-ClasificacionTriage:before {
-    content: "\e99e";
+    
 }
 
 .icon-Soporte:before {

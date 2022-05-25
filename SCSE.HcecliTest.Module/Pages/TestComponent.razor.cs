@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿namespace SCSE.HcecliTest.Module;
+
+using Microsoft.AspNetCore.Components;
 using SCSE.DynamicForms.Module.Domain;
 using SCSE.Framework.Application.Core;
 using SCSE.Framework.Common.Components.Blz;
 using SCSE.Framework.Searches.Model;
-
-namespace SCSE.HcecliTest.Module;
 
 public partial class TestComponent
 {
