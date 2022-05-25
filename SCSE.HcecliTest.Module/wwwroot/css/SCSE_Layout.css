@@ -10,13 +10,29 @@
 
 /*** [ 1 - Blazor Site ] ***/
 
+:root {
+    --ratio-appbar-dense: 4;
+}
+
 html, body {
     font-family: "Poppins Medium", sans-serif;
 }
 
+/*a {
+    color: #0366d6;
+}
+
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #26b050;
+}
+
+.invalid {
+    outline: 1px solid red;
+}
+
 .validation-message {
     color: red;
-}
+}*/
 
 #blazor-error-ui {
     background: lightyellow;
@@ -46,10 +62,6 @@ html, body {
     .blazor-error-boundary::after {
         content: "Un error ha ocurrido."
     }
-
-:root {
-    --ratio-appbar-dense: 4;
-}
 
 /*** [ 2 - MudAppBar-Header ] ***/
 
@@ -117,8 +129,7 @@ html, body {
 
 /*** [ 6 - MudButton ] ***/
 
-/* Se inactiva el uppercase del texto en los botones */
-.mud-button {
+/*.mud-button {
     border-radius: 13px;
 }
 
@@ -131,25 +142,25 @@ html, body {
 }
 
 button.mud-icon-button {
-    padding: 6px; /* Distancia del destello para botones con icono */
-}
+    padding: 6px;*/ /* Distancia del destello para botones con icono */
+/*}
 
 .mud-icon-button:disabled .mud-icon-root {
     color: var(--mud-palette-action-disabled-background);
 }
 
 .mud-button-icon-label-size-large-scse.mud-button-icon-size-large > *:first-child {
-    font-size: 2.125rem; /* Icono del botón icon-text */
-}
+    font-size: 2.125rem;*/ /* Icono del botón icon-text */
+/*}
 
 .mud-button-icon-label-scse.mud-button, .mud-button-icon-label-scse.mud-button:disabled {
     line-height: 1;
 }
 
     .mud-button-icon-label-scse.mud-button .mud-button-label {
-        display: block;
+        display: block;*/
         /*font-family: "Poppins Medium";*/
-        font-size: 0.8rem;
+        /*font-size: 0.8rem;
         color: var(--mud-palette-action-disabled-background);
     }
 
@@ -162,7 +173,7 @@ button.mud-icon-button {
 
     .mud-button-icon-label-scse.mud-button:disabled .mud-button-label {
         color: var(--mud-palette-action-disabled-background);
-    }
+    }*/
 
 /*.mud-icon-size-large*/
 

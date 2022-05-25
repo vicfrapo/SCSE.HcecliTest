@@ -6,6 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Assets\fonts\poppins\Poppins-Medium.woff2" />
+    <None Include="wwwroot\Assets\fonts\poppins\Poppins-Regular.woff2" />
+    <None Include="wwwroot\Assets\fonts\scse_icons\SCSE_Icons.svg" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.4" />

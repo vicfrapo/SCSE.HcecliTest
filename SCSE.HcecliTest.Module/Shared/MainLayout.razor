@@ -1,13 +1,101 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider />
-<MudDialogProvider />
-<MudSnackbarProvider />
+@using SCSE.ClinicalComponents.Blz
 
-<MudMainContent Class="pt-0">
-    <MudGrid>
-        <MudItem xs="12" Class="mb-10">
+<MudLayout>
+    <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
+        <MudAppBar Dense="false" Elevation="0">
+            <MudIconButton Icon="@SCSEIcons.Commons.Menu" Size="Size.Small" IconSize="Size.Small"
+                    OnClick="@ToggleDrawer" Class="mr-2" />
+            <MudText Typo="Typo.subtitle1">Inicio</MudText>
+            <MudSpacer />
+            <MudIconButton Icon="@SCSEIcons.Commons.FlechaAbajo" Color="Color.Inherit" Class="mr-2"></MudIconButton>
+            <MudIcon Icon="@SCSEIcons.Commons.UsuarioPaciente" Color="Color.Inherit" Size="Size.Large" />
+        </MudAppBar>
+        <MudDrawer @bind-Open="@open" ClipMode="DrawerClipMode.Always" PreserveOpenState="false"
+                   Elevation="0" Variant="DrawerVariant.Responsive" OpenMiniOnHover="false">
+            <NavMenu />
+        </MudDrawer>
+    </MudHidden>
+
+    @*@(appcontext.CurrentUser != null ? appcontext.CurrentUser.Code : "" )*@
+    <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
+        <MudAppBar Dense="false" Elevation="0" DisableGutters="true" ToolBarClass="pl-3 py-1" Class="mud-appbar-header-scse">
+            <MudItem Class="d-flex grey lighten-5 pa-1 rounded-pill mud-height-full">
+                <MudImage Src="/Assets/images/LogoEmpresa.png" Alt="Logo Empresa" ObjectFit="ObjectFit.Cover" Class="mud-height-full"></MudImage>
+            </MudItem>
+            <MudDivider Vertical="true" Class="mx-5 my-3" />
+            <MudText Typo="Typo.h6">Inicio</MudText>
+            <MudSpacer />
+            <MudIconButton Icon="@SCSEIcons.Commons.Notificacion" Color="Color.Inherit" Size="Size.Medium" Class="mr-2"></MudIconButton>
+            
+            <MudMenu Variant="Variant.Filled" AnchorOrigin="Origin.BottomLeft" TransformOrigin="Origin.TopLeft" Class="mud-popover-scse" PopoverClass="mud-popover-scse" ListClass="py-0"
+                Color="Color.Default" Size="Size.Large" FullWidth="true" Dense="true">
+                <ActivatorContent>
+                    <div class="mud-menu-activator-scse d-flex align-center pl-2 pr-2">
+                        <MudIcon Icon="@SCSEIcons.Commons.UsuarioTablero" Color="Color.Inherit" Size="Size.Large" />
+                        <MudItem Class="ml-2">
+                            <MudText Typo="Typo.subtitle1">Maria Solarte</MudText>
+                            <MudText Typo="Typo.subtitle2" Class="mt-n2">Centro de salud 2</MudText>
+                        </MudItem>
+                        <MudIcon Icon="@SCSEIcons.Commons.FlechaAbajo" Color="Color.Inherit" Size="Size.Small" Class="ml-4" />
+                    </div>
+                </ActivatorContent>
+                <ChildContent>
+                    <MudMenuItem>
+                        <span class="d-flex align-center">
+                            <MudIcon Icon="@Icons.Material.Filled.Share" Class="mr-2"/>
+                            <MudText Typo="Typo.subtitle1">Cambiar sede</MudText>
+                        </span>
+                    </MudMenuItem>
+                    <MudMenuItem>
+                        <span class="d-flex align-center">
+                            <MudIcon Icon="@SCSEIcons.Commons.UsuarioPaciente" Class="mr-2"/>
+                            <MudText Typo="Typo.subtitle1">Perfil</MudText>
+                        </span>
+                    </MudMenuItem>
+                    <MudMenuItem>
+                        <span class="d-flex align-center">
+                            <MudIcon Icon="@SCSEIcons.Commons.Soporte" Class="mr-2"/>
+                            <MudText Typo="Typo.subtitle1">Soporte</MudText>
+                        </span>
+                    </MudMenuItem>
+                    <MudMenuItem>
+                        <span class="d-flex align-center">
+                            <MudIcon Icon="@SCSEIcons.Commons.Salir" Class="mr-2"/>
+                            <MudText Typo="Typo.subtitle1">Cerrar sesión</MudText>
+                        </span>
+                    </MudMenuItem>
+                    <MudMenuItem Class="pt-0">
+                        <MudDivider Class="pt-0" DividerType="DividerType.FullWidth"></MudDivider>
+                        <span class="d-flex px-7 pt-1">
+                            <MudImage Src="/Assets/images/LogoServinte.png" Alt="Logo Servinte" ObjectFit="ObjectFit.Cover" Fluid="true"></MudImage>
+                        </span>
+                        <MudText Typo="Typo.caption" Class="d-flex justify-center">Políticas de privacidad</MudText>
+                    </MudMenuItem>
+                </ChildContent>
+            </MudMenu>
+        </MudAppBar>
+        <MudDrawer @bind-Open="@open" ClipMode="DrawerClipMode.Always" Breakpoint="Breakpoint.SmAndUp" Class="mud-drawer-fixed-scse"
+                   Elevation="0" Variant="DrawerVariant.Mini" OpenMiniOnHover="true">
+            <NavMenu Open="@open" />
+        </MudDrawer>
+    </MudHidden>
+
+    <MudMainContent Class="mud-main-content-scse">
+        <MudContainer Class="pa-0" MaxWidth="MaxWidth.False">
             @Body
-        </MudItem>
-    </MudGrid>
-</MudMainContent>
+        </MudContainer>
+    </MudMainContent>
+
+    <footer class="mud-appbar-footer-scse mud-appbar mud-appbar-dense mud-appbar-fixed-bottom mud-elevation-2">
+        <MudToolBar DisableGutters="false" Class="mud-toolbar-appbar px-3 py-0">
+            <MudText Color="Color.Primary" Typo="Typo.subtitle2">© 2022 - Carvajal Tecnología y Servicios</MudText>
+            <MudSpacer />
+            <MudText Color="Color.Primary" Typo="Typo.subtitle2">@($"Sistema 09 | Pantalla de cargues - 9.0.2 (csiope)")</MudText>
+            <MudItem Class="mud-height-full ml-2">
+                <MudImage Src="/Assets/images/LogoServinte.png" Alt="Logo Servinte" ObjectFit="ObjectFit.Cover" Class="mud-height-full"></MudImage>
+            </MudItem>
+        </MudToolBar>
+    </footer>
+</MudLayout>
