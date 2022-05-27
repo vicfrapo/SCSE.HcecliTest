@@ -28,7 +28,7 @@
                 @foreach (var item in Templates)
                 {
                     <MudTabPanel Tag="@item.Code" ID="@item.Code" Text="@item.Description">
-                        <DynamicFormRenderComponent Code="@item.Code" Program="chppla" @ref="@item.Template" TemplateCode="@item.Code" Context="Context" LoadPartialData="true" />
+                        <DynamicFormRenderComponent Code="@item.Code"  Program="chppla" @ref="@item.Template" TemplateCode="@item.Code" Context="Context" LoadPartialData="true" OnEditorEvent="OnRaiseEditorEvent" />
                     </MudTabPanel>
                 }
             }
@@ -54,6 +54,7 @@
     <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="SavePartial">Guardar parcial</MudButton>
     <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="Test">Test</MudButton>
     <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="Test2">Plantilla prueba 2</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="GetData">Obtener Datos</MudButton>
 </MudPaper>
 
 @*<MudAppBar Bottom="true" Fixed="true" Elevation="1" Dense="true" Color="Color.Primary">
