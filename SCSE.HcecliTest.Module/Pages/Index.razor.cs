@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using SCSE.DynamicForms.Components;
 using SCSE.DynamicForms.Module.Domain;
+using SCSE.Framework.DynamicCore.Application;
 using SCSE.Framework.Searches.Model;
 using SCSE.HcecliTest.Domain;
 using SCSE.HcecliTest.ViewModels;
@@ -114,25 +115,13 @@ public partial class Index
 
     public void OnClickMenu(GenericItem item)
     {
-        //SelectedTemplate = null;
-        //SelectedTemplateComponent = null;
-
-        //DynamicTemplateItem newDynamicTemplateItem = new DynamicTemplateItem()
-        //{
-        //    Code = item.Code,
-        //    Description = item.Value,
-        //    IsVisible = true
-        //};
-
-        //SelectedTemplate = newDynamicTemplateItem;
-
         if (!Templates.Any(x => x.Code.Equals(item.Code)))
         {
             DynamicTemplateItem newDynamicTemplateItem = new DynamicTemplateItem()
             {
                 Code = item.Code,
                 Description = item.Value,
-                IsVisible = true
+                IsVisible = true,                
             };
 
             SelectedTemplate = newDynamicTemplateItem;
@@ -140,11 +129,6 @@ public partial class Index
         }
 
         _updateIndex = true;
-        //tabs.ActivatePanel(Templates.FindIndex(x => x.Code.Equals(item.Code)));
-        //activeIndex = Templates.FindIndex(x=>x.Code.Equals(item.Code));
-        //activeIndex = 1;
-
-        //contador++;
     }
 
     public void Validate()
@@ -231,5 +215,32 @@ public partial class Index
     public void OnChangedTab(int tab)
     {
 
+    }
+
+    /// <summary>
+    /// Evento generado por un editor/Componente
+    /// </summary>
+    /// <param name="eventArgs"></param>
+    public void OnRaiseEditorEvent(ContextEventArgs eventArgs)
+    {
+
+    }
+
+    public void GetData()
+    {
+        List<Dictionary<string,object>> Values = new();
+        Dictionary<string, object> value;
+
+        if (Templates.Any())
+        {
+            Templates.ForEach(template => {
+                value = new Dictionary<string, object>();
+                value.Add(template.Code, template.Template.GetValue());
+                Values.Add(value);
+            });
+        }
+
+        var sss = Values;
+        var oo = sss;
     }
 }
