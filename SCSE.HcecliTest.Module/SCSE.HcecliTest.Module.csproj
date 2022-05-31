@@ -20,10 +20,10 @@
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 		<PackageReference Include="MudBlazor" Version="6.0.10" />
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-		<PackageReference Include="SCSE.Framework.Application" Version="2.0.9" />
-		<PackageReference Include="SCSE.Framework.Application.Core" Version="2.0.9" />
-		<PackageReference Include="SCSE.Framework.DynamicCore.Application" Version="2.0.9" />
-		<PackageReference Include="SCSE.Framework.Common.Components.Blz" Version="2.0.9" />
+		<PackageReference Include="SCSE.Framework.Application" Version="2.0.10" />
+		<PackageReference Include="SCSE.Framework.Application.Core" Version="2.0.10" />
+		<PackageReference Include="SCSE.Framework.DynamicCore.Application" Version="2.0.10" />
+		<PackageReference Include="SCSE.Framework.Common.Components.Blz" Version="2.0.10" />
 		<PackageReference Include="SCSE.Framework.Jwt" Version="2.0.0" />
 		<PackageReference Include="SCSE.Framework.Security.Model" Version="2.0.0" />
 		<PackageReference Include="SCSE.Framework.Storage.Model" Version="2.0.0" />
