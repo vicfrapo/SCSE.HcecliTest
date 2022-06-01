@@ -1,0 +1,35 @@
+﻿/***** Expansion Panels *****/
+
+.mud-expand-panel .mud-expand-panel-header {
+    color: var(--mud-palette-primary-text) !important;
+    background-color: var(--mud-palette-primary) !important;
+    padding: 8px 20px 8px 20px;
+    min-height: unset;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+.mud-expand-panel .mud-expand-panel-content {
+    padding: 8px 12px;
+}
+
+/**** MudCard ****/
+
+.mud-card-header {
+    color: var(--mud-palette-primary-text) !important;
+    background-color: var(--mud-palette-primary) !important;
+    padding: 8px 20px 8px 20px;
+}
+
+.mud-card-content {
+    padding: 8px 12px;
+}
+
+.mud-card.mud-paper {
+    padding: 0;
+}
+
+/***** Paper *****/
+.mud-paper-scse.mud-paper {
+    padding: 8px 12px;
+}
