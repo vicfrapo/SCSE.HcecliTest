@@ -243,4 +243,17 @@ public partial class Index
         var sss = Values;
         var oo = sss;
     }
+
+    public void SetValue()
+    {
+        if (Templates.Any())
+        {
+            Templates.ForEach(template => {
+                Dictionary<string, object> valores = new Dictionary<string, object>();
+                valores.Add("chptamcol005", "Ahi vamos dandole");
+                valores.Add("chptamcol003", "S");
+                template.Template.SetValue(valores);
+            });
+        }
+    }
 }
