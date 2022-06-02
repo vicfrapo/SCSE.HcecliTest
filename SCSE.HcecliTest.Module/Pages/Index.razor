@@ -19,9 +19,9 @@
         </MudPaper>
     </MudItem>
 
-    <MudItem xs="10">
-        <MudDynamicTabs @ref="tabs" Elevation="0" Outlined="true" Rounded="true" KeepPanelsAlive="true"
-            ApplyEffectsToContainer="true" PanelClass="px-4 py-6" CloseTab="@((panel) => CloseTabCallback(panel))" 
+    <MudItem xs="10" >
+        <MudDynamicTabs @ref="tabs" Elevation="0" Outlined="true" Rounded="false" KeepPanelsAlive="true" ApplyEffectsToContainer="true" 
+            PanelClass="d-flex mud-height-full px-4 py-6 white" CloseTab="@((panel) => CloseTabCallback(panel))" 
             @bind-ActivePanelIndex="IndexTab" CloseIconToolTip="Cerrar">
             @if (Templates != null)
             {
@@ -37,25 +37,25 @@
 </MudGrid>
 
 <MudPaper Elevation="0" Outlined="true" Class="pa-1">
-    <MudMenu Label="Componentes" MaxHeight="500" FullWidth="true" Style="width: 300px;" Variant="Variant.Filled" Color="Color.Info">
+    <MudMenu Label="Componentes" MaxHeight="500" FullWidth="true" Style="width: 300px;" Variant="Variant.Filled" Color="Color.Primary">
         @if (TemplatesMenuList != null)
         {
             @foreach (var item in TemplatesMenuList)
             {
                 <MudMenuItem OnClick="(()=> OnClickMenu(item))">
                     <span class="d-flex">
-                        <MudIcon Icon="@Icons.Material.Filled.ChevronRight" /> @item.Value
+                        <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Color="Color.Primary"/> @item.Value
                     </span>
                 </MudMenuItem>
             }
         }
     </MudMenu>
-    <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="Validate">Validar</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="SavePartial">Guardar parcial</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="Test">Test</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="Test2">Plantilla prueba 2</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="GetData">Obtener Datos</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Tertiary" OnClick="SetValue">SetValue</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Validate">Validar</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SavePartial">Guardar parcial</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Test">Test</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Test2">Plantilla prueba 2</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="GetData">Obtener Datos</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SetValue">SetValue</MudButton>
 </MudPaper>
 
 @*<MudAppBar Bottom="true" Fixed="true" Elevation="1" Dense="true" Color="Color.Primary">

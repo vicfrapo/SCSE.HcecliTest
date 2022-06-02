@@ -10,13 +10,13 @@ public class ClinicalTheme : MudTheme
         {
             Background= "#F2F2F2",
 
-            Primary = "#0A3A5A",
-            PrimaryDarken= "#3D5687",
-            PrimaryLighten = "#3D5687",
-            Secondary = "#1EA3DB",
-            Tertiary = "#7CB749",
-            TertiaryDarken= "#99D961",
-            TertiaryLighten = "#99D961",
+            Primary = "#7CB749",
+            PrimaryDarken = "#99D961",
+            PrimaryLighten = "#99D961",
+            Secondary = "#0A3A5A",
+            SecondaryDarken = "#3D5687",
+            SecondaryLighten = "#3D5687",
+            Tertiary = "#1EA3DB",
 
             LinesDefault = "#CECECE",
             Info = "#1EA3DB",

@@ -99,7 +99,7 @@ html, body {
 }
 
 .mud-drawer.mud-drawer--open .mud-nav-link:not(.mud-nav-link-disabled) .mud-nav-link-icon.mud-nav-link-icon-default {
-    color: var(--mud-palette-primary);
+    color: var(--mud-palette-white);
 }
 
 .mud-navmenu .mud-nav-group .mud-nav-link.active:first-child {
