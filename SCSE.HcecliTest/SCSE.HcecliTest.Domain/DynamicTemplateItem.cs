@@ -10,6 +10,7 @@ namespace SCSE.HcecliTest.Domain;
 
 public class DynamicTemplateItem
 {
+    public string Version { get; set; }
     ///Código
     public string Code { get; set; }
     ///Descripción

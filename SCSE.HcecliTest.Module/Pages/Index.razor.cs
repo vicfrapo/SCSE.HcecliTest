@@ -20,7 +20,7 @@ public partial class Index
     /// </summary>
     [Inject] HttpClient _httpClient { get; set; }
 
-    List<GenericItem> TemplatesMenuList { get; set; }
+    List<DynamicFormItem> TemplatesMenuList { get; set; } = new();
 
     List<DynamicTemplateItem> Templates { get; set; } = new();
 
@@ -36,7 +36,15 @@ public partial class Index
         ViewModel.HttpClient = _httpClient;
         Context = BuildContextTemplate();
         ViewModel.ContextTemplate = Context;
-        TemplatesMenuList = await ViewModel.GetTemplates();
+
+        var allTemplates = await ViewModel.GetTemplates();
+        allTemplates.ForEach(template =>
+        {
+            if (!TemplatesMenuList.Any(x => x.Code.Equals(template.Code)))
+                TemplatesMenuList.Add(template);
+        });
+
+        //TemplatesMenuList = await ViewModel.GetTemplates();
     }
 
     protected override void OnAfterRender(bool firstRender)
@@ -113,15 +121,16 @@ public partial class Index
         };
     }
 
-    public void OnClickMenu(GenericItem item)
+    public void OnClickMenu(DynamicFormItem item)
     {
         if (!Templates.Any(x => x.Code.Equals(item.Code)))
         {
             DynamicTemplateItem newDynamicTemplateItem = new DynamicTemplateItem()
             {
                 Code = item.Code,
-                Description = item.Value,
-                IsVisible = true,                
+                Description = item.Name,
+                IsVisible = true,
+                Version = item.Version.ToString()
             };
 
             SelectedTemplate = newDynamicTemplateItem;
@@ -172,19 +181,19 @@ public partial class Index
 
 
     int indexTab;
-    private int IndexTab 
+    private int IndexTab
     {
         get { return indexTab; }
-        set 
-        { 
+        set
+        {
             indexTab = value;
             SetTabVisible(value);
-        } 
+        }
     }
 
     void SetTabVisible(int index)
     {
-        if(Templates.Any())
+        if (Templates.Any())
         {
             var currentPanel = tabs.ActivePanel;
             if (currentPanel != null)
@@ -228,12 +237,13 @@ public partial class Index
 
     public void GetData()
     {
-        List<Dictionary<string,object>> Values = new();
+        List<Dictionary<string, object>> Values = new();
         Dictionary<string, object> value;
 
         if (Templates.Any())
         {
-            Templates.ForEach(template => {
+            Templates.ForEach(template =>
+            {
                 value = new Dictionary<string, object>();
                 value.Add(template.Code, template.Template.GetValue());
                 Values.Add(value);
@@ -244,16 +254,51 @@ public partial class Index
         var oo = sss;
     }
 
-    public void SetValue()
+    public async Task SetValue()
     {
         if (Templates.Any())
         {
-            Templates.ForEach(template => {
+            Templates.ForEach(template =>
+            {
                 Dictionary<string, object> valores = new Dictionary<string, object>();
                 valores.Add("chptamcol005", "Ahi vamos dandole");
                 valores.Add("chptamcol003", "S");
                 template.Template.SetValue(valores);
             });
         }
+    }
+
+
+    public void Save()
+    {
+        List<MedicalRegisterItem> medicalItems = new();
+
+        if (Templates.Any())
+        {
+            Templates.ForEach(template =>
+            {
+                if (template.Template != null)
+                {
+                    var DatosPlantilla = template.Template.GetValue();
+                    if (DatosPlantilla != null)
+                    {
+                        medicalItems.Add(new MedicalRegisterItem()
+                        {
+                            History = 12345,
+                            Episode = 199,
+                            Program = template.Code,
+                            Version = Convert.ToDecimal(template.Version),
+                            LocationCode = "URG",
+                            SpecialtyCode = "MED",
+                            RegisterDate = DateTime.Now,
+                            UserCode = "vfranco",
+                            ComponentsValues = DatosPlantilla as Dictionary<string, string>
+                        });
+                    }
+                }
+            });
+        }
+
+        ViewModel.Save(medicalItems);
     }
 }

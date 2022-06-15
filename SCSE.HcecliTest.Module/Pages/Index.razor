@@ -28,7 +28,7 @@
                 @foreach (var item in Templates)
                 {
                     <MudTabPanel Tag="@item.Code" ID="@item.Code" Text="@item.Description">
-                        <DynamicFormRenderComponent Code="@item.Code"  Program="chppla" @ref="@item.Template" TemplateCode="@item.Code" Context="Context" LoadPartialData="true" OnEditorEvent="OnRaiseEditorEvent" />
+                        <DynamicFormRenderComponent Code="@item.Code" TemplateVersion="@item.Version"  Program="chppla" @ref="@item.Template" TemplateCode="@item.Code" Context="Context" LoadPartialData="true" OnEditorEvent="OnRaiseEditorEvent" />
                     </MudTabPanel>
                 }
             }
@@ -44,18 +44,20 @@
             {
                 <MudMenuItem OnClick="(()=> OnClickMenu(item))">
                     <span class="d-flex">
-                        <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Color="Color.Primary"/> @item.Value
+                        <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Color="Color.Primary"/> @item.Name
                     </span>
                 </MudMenuItem>
             }
         }
     </MudMenu>
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Validate">Validar</MudButton>
+@*    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Validate">Validar</MudButton>
     <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SavePartial">Guardar parcial</MudButton>
     <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Test">Test</MudButton>
     <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Test2">Plantilla prueba 2</MudButton>
     <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="GetData">Obtener Datos</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SetValue">SetValue</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SetValue">SetValue</MudButton>*@
+
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Save">Guardar</MudButton>
 </MudPaper>
 
 @*<MudAppBar Bottom="true" Fixed="true" Elevation="1" Dense="true" Color="Color.Primary">

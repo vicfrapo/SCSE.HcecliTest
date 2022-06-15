@@ -1,4 +1,5 @@
-﻿using SCSE.DynamicForms.Module.Domain;
+﻿using Newtonsoft.Json;
+using SCSE.DynamicForms.Module.Domain;
 using SCSE.Framework.Common.HttpClientHelpers;
 using SCSE.Framework.Searches.Model;
 using System;
@@ -30,10 +31,23 @@ public class IndexViewModel
     /// Ontener listado de plantillasd dinamicas
     /// </summary>
     /// <returns></returns>
-    public async Task<List<GenericItem>> GetTemplates()
+    public async Task<List<DynamicFormItem>> GetTemplates()
     {
         _HttpClientRepository = new HttpClientRepository(HttpClient);
-        var requestTemplateLayout = await _HttpClientRepository.Get<List<GenericItem>>($"https://localhost:7004/DynamicFormsModule/DynamicForms/api/v1/GetDynamicTemplates");
+        var requestTemplateLayout = await _HttpClientRepository.Get<List<DynamicFormItem>>($"https://localhost:7004/DynamicFormsModule/DynamicForms/api/v1/GetDynamicTemplates");
         return requestTemplateLayout.Response;
+    }
+
+
+    public async Task<List<MedicalRegisterItemSave>> Save(List<MedicalRegisterItem> medicalRegisterItems)
+    {
+        HttpClientRepository httpClientRepository = new HttpClientRepository(HttpClient);
+        HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7004/DynamicFormsModule/DynamicForms/api/v1/SaveClinicalRegisterAsync");
+        request.Content = new StringContent(JsonConvert.SerializeObject(medicalRegisterItems), Encoding.UTF8, "application/json");
+
+        //var response = await httpClientRepository.Send<int>(request);
+        var ww = await httpClientRepository.Send<List<MedicalRegisterItemSave>>(request);
+
+        return ww.Response;
     }
 }
