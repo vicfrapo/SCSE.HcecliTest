@@ -1,0 +1,63 @@
+﻿/***** Expansion Panels *****/
+
+.mud-expand-panel .mud-expand-panel-header {
+    color: var(--mud-palette-primary-text) !important;
+    background-color: var(--mud-palette-primary) !important;
+    padding: 8px 20px 8px 20px;
+    min-height: unset;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+.mud-expand-panel .mud-expand-panel-content {
+    padding: 8px 12px;
+}
+
+/**** MudCard ****/
+
+.mud-card-header {
+    color: var(--mud-palette-primary-text) !important;
+    background-color: var(--mud-palette-primary) !important;
+    padding: 8px 20px 8px 20px;
+}
+
+.mud-card-content {
+    padding: 8px 12px;
+}
+
+.mud-card.mud-paper {
+    padding: 0;
+}
+
+/***** Paper *****/
+.mud-paper-scse.mud-paper {
+    padding: 8px 12px;
+}
+
+
+
+.infopatient-header-scse {
+    display: block;
+    position: fixed;
+    top: var(--mud-appbar-height);
+    min-height: 80px;
+    z-index: 1000;
+}
+
+.infopatient-body-scse {
+    /*background-color: red;*/
+    margin-top: calc(var(--mud-appbar-height) + 80px);
+    /*margin-bottom: 75px !important;*/
+    margin-bottom: calc((var(--mud-appbar-height) - var(--mud-appbar-height) / var(--ratio-appbar-dense)) - 40px);
+    height: calc(100vh - 100px - (var(--mud-appbar-height) + 80px) - ((var(--mud-appbar-height) - var(--mud-appbar-height) / var(--ratio-appbar-dense)) - 40px));
+    min-height: calc(100vh - 100px - (var(--mud-appbar-height) + 80px) - ((var(--mud-appbar-height) - var(--mud-appbar-height) / var(--ratio-appbar-dense)) - 40px));
+    overflow: auto;
+}
+
+.infopatient-footer-scse {
+    display: flex;
+    position: fixed;
+    bottom: calc(var(--mud-appbar-height) - var(--mud-appbar-height) / var(--ratio-appbar-dense));
+    height: 40px;
+    min-height: 40px;
+}

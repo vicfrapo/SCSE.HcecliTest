@@ -67,6 +67,7 @@ public partial class Index
     public DynamicFormRenderComponent ComponentC { get; set; }
 
     MudDynamicTabs tabs;
+    bool SearchMode { get; set; } = true;
 
     /// Construir el contexto
     private WebDynamicContext BuildContextTemplate()
@@ -123,6 +124,8 @@ public partial class Index
 
     public void OnClickMenu(DynamicFormItem item)
     {
+        SearchMode = false;
+
         if (!Templates.Any(x => x.Code.Equals(item.Code)))
         {
             DynamicTemplateItem newDynamicTemplateItem = new DynamicTemplateItem()
@@ -307,5 +310,10 @@ public partial class Index
         var values = await ViewModel.Load();
 
         Templates[0].Template.SetValue(values[0].ComponentsValues);
+    }
+
+    public async Task History()
+    {
+        SearchMode = true;
     }
 }

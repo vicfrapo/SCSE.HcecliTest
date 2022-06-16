@@ -113,7 +113,7 @@ html, body {
     margin-left: var(--mud-drawer-width-mini-left);
     margin-right: 0;
     margin-bottom: calc(var(--mud-appbar-height) - var(--mud-appbar-height) / var(--ratio-appbar-dense));
-    padding: 16px;
+    padding: 0px;
 }
 
 /*** [ 5 - MudAppBar-Footer ] ***/
