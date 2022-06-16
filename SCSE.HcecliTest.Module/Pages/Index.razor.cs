@@ -304,6 +304,8 @@ public partial class Index
 
     public async Task Load()
     {
-        var values = ViewModel.Load();
+        var values = await ViewModel.Load();
+
+        Templates[0].Template.SetValue(values[0].ComponentsValues);
     }
 }
