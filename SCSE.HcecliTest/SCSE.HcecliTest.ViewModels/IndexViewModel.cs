@@ -50,4 +50,11 @@ public class IndexViewModel
 
         return ww.Response;
     }
+
+    public async Task<List<MedicalRegisterItem>> Load()
+    {
+        HttpClientRepository _HttpClientRepository = new HttpClientRepository(HttpClient);
+        var requestTemplateLayout = await _HttpClientRepository.Get<List<MedicalRegisterItem>>($"https://localhost:7004/DynamicFormsModule/DynamicForms/api/v1/GetClinicalRegisterAsync/12345/199");
+        return requestTemplateLayout.Response;
+    }
 }

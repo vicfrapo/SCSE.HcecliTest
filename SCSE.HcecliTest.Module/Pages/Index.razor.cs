@@ -301,4 +301,9 @@ public partial class Index
 
         ViewModel.Save(medicalItems);
     }
+
+    public async Task Load()
+    {
+        var values = ViewModel.Load();
+    }
 }
