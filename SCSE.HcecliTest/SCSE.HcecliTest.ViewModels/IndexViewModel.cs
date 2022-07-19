@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SCSE.DynamicForms.Module.Domain;
+using SCSE.DynamicForms.Module.Domain.Entities.DynamicTemplate;
+using SCSE.DynamicForms.Module.Domain.Entities.MedicalRegister;
 using SCSE.Framework.Common.HttpClientHelpers;
 using SCSE.Framework.Searches.Model;
 using System;
@@ -26,6 +28,14 @@ public class IndexViewModel
     /// </summary>
     HttpClientRepository _HttpClientRepository { get; set; }
     #endregion
+
+
+    public async Task<string> GetToken()
+    {
+        _HttpClientRepository = new HttpClientRepository(HttpClient);
+        var tok = await _HttpClientRepository.Get<GenericItem>("https://localhost:4431/Components/api/v1/TokenGenerator/GetToken/DynamicFormsModule");
+        return tok.Response.Value;
+    }
 
     /// <summary>
     /// Ontener listado de plantillasd dinamicas

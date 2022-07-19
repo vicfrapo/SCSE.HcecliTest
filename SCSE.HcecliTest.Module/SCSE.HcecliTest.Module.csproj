@@ -13,6 +13,7 @@
   </ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Markdig" Version="0.30.2" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="6.0.0" />
@@ -88,6 +89,9 @@
 	  </Reference>
 	  <Reference Include="SCSE.Framework.Storage.Model">
 	    <HintPath>..\SCSE.HcecliTest\References\SCSE.Framework.Storage.Model.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Servinte.Services.Common">
+	    <HintPath>..\SCSE.HcecliTest\References\Servinte.Services.Common.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 

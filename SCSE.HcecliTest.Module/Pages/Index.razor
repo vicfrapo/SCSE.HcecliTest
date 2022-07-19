@@ -7,13 +7,14 @@
 @using SCSE.Framework.Application.Core
 @using SCSE.Framework.Common.Components.Blz
 @using SCSE.DynamicForms.Components
+@using Markdig
 
 <MudPaper Class="pa-5 mud-width-full infopatient-header-scse" Elevation="1" Square="true">
     <MudText Typo="Typo.h5" Color="Color.Dark">Datos del paciente</MudText>
 </MudPaper>
 
 <div class="pa-3 infopatient-body-scse">
-    @if(SearchMode)
+    @if (SearchMode)
     {
         <MudGrid Spacing="1" Class="mud-height-full">
             <MudItem xs="2">
@@ -23,32 +24,43 @@
             </MudItem>
 
             <MudItem xs="10">
-                    <MudCard Class="mud-width-full">
-                        <MudCardContent>
-                            <MudText>Story of the day</MudText>
-                            <MudText Typo="Typo.body2">The quick, brown fox jumps over a lazy dog.</MudText>
-                        </MudCardContent>
-                        <MudCardActions Class="d-flex justify-end">
-                            <MudButton Variant="Variant.Filled" Class="mr-2" Color="Color.Primary">Firmar</MudButton>
-                            <MudButton Variant="Variant.Filled" Color="Color.Secondary">Editar</MudButton>
-                        </MudCardActions>
-                    </MudCard>
+                @if (HistoriList != null && HistoriList.Any())
+                {
+                    @foreach (var item in HistoriList)
+                    {
+                        var TemplateText = (MarkupString)Markdown.ToHtml(item.TemplateText.Body);
+
+                        <MudCard Class="mud-width-full mb-2">
+                            <MudCardContent>
+                                <MudText>Secuencia medica: @item.Sequence</MudText>
+@*                                <MudText Typo="Typo.body2">@item.UserCode</MudText>
+                                <MudText Typo="Typo.body2">Programa: @item.Program</MudText>
+                                <MudText Typo="Typo.body2">Version: @item.Version</MudText> *@   
+                                @TemplateText
+                            </MudCardContent>
+                            <MudCardActions Class="d-flex justify-end">
+                                <MudButton OnClick="@(()=> SignNote(@item))" Variant="Variant.Filled" Class="mr-2" Color="Color.Primary">Firmar</MudButton>
+                                <MudButton OnClick="@(()=> EditNote(@item))" Variant="Variant.Filled" Color="Color.Secondary">Editar</MudButton>
+                            </MudCardActions>
+                        </MudCard>
+                    }
+                }
             </MudItem>
         </MudGrid>
     }
     else
     {
-        <MudDynamicTabs @ref="tabs" Elevation="1" Rounded="true" KeepPanelsAlive="true" 
-            ApplyEffectsToContainer="true" Class="mud-height-full"
-            PanelClass="d-flex mud-height-full px-4 py-6 white" 
-            CloseTab="@((panel) => CloseTabCallback(panel))"
-            @bind-ActivePanelIndex="IndexTab" CloseIconToolTip="Cerrar">
+        <MudDynamicTabs @ref="tabs" Elevation="1" Rounded="true" KeepPanelsAlive="true"
+                    ApplyEffectsToContainer="true" Class="mud-height-full"
+                    PanelClass="d-flex mud-height-full px-4 py-6 white"
+                    CloseTab="@((panel) => CloseTabCallback(panel))"
+                    @bind-ActivePanelIndex="IndexTab" CloseIconToolTip="Cerrar">
             @if (Templates != null)
             {
                 @foreach (var item in Templates)
                 {
                     <MudTabPanel Tag="@item.Code" ID="@item.Code" Text="@item.Description">
-                        <DynamicFormRenderComponent Code="@item.Code" TemplateVersion="@item.Version" Program="chppla" @ref="@item.Template" TemplateCode="@item.Code" Context="Context" LoadPartialData="true" OnEditorEvent="OnRaiseEditorEvent" />
+                        <DynamicFormRenderComponent Code="@item.Code" TemplateVersion="@item.Version" Program="chppla" @ref="@item.Template" TemplateCode="@item.Code" Context="Context" LoadPartialData="false" OnEditorEvent="OnRaiseEditorEvent" />
                     </MudTabPanel>
                 }
             }
@@ -62,8 +74,8 @@
 <MudPaper Elevation="1" Class="px-3 py-1 mud-width-full infopatient-footer-scse" Square="true">
     <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="History" Class="mr-2">Histórico</MudButton>
 
-    <MudMenu Label="Componentes" MaxHeight="500" FullWidth="true" Style="width: 300px; height: 30px"
-        Variant="Variant.Filled" Color="Color.Primary" >
+    <MudMenu Label="Notas Medicas" MaxHeight="500" FullWidth="true" Style="width: 300px; height: 30px"
+             Variant="Variant.Filled" Color="Color.Primary">
         @if (TemplatesMenuList != null)
         {
             @foreach (var item in TemplatesMenuList)
@@ -85,5 +97,5 @@
     <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SetValue">SetValue</MudButton>*@
 
     <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Save" Class="mr-2">Guardar</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Load">Cargar Datos</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Sign" Class="mr-2">Firmar</MudButton>    
 </MudPaper>

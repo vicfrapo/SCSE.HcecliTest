@@ -4,11 +4,14 @@ using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using SCSE.DynamicForms.Components;
 using SCSE.DynamicForms.Module.Domain;
+using SCSE.DynamicForms.Module.Domain.Entities.DynamicTemplate;
+using SCSE.DynamicForms.Module.Domain.Entities.MedicalRegister;
 using SCSE.Framework.DynamicCore.Application;
 using SCSE.Framework.Searches.Model;
 using SCSE.HcecliTest.Domain;
 using SCSE.HcecliTest.ViewModels;
 using System.Linq;
+using Markdig;
 
 public partial class Index
 {
@@ -21,8 +24,10 @@ public partial class Index
     [Inject] HttpClient _httpClient { get; set; }
 
     List<DynamicFormItem> TemplatesMenuList { get; set; } = new();
+    List<DynamicFormItem> allTemplates { get; set; } = new();
 
     List<DynamicTemplateItem> Templates { get; set; } = new();
+    List<MedicalRegisterItem> HistoriList { get; set; } = new();
 
     DynamicTemplateItem SelectedTemplate { get; set; }
 
@@ -35,9 +40,12 @@ public partial class Index
         ViewModel = new IndexViewModel();
         ViewModel.HttpClient = _httpClient;
         Context = BuildContextTemplate();
+
+        Context.Token = await ViewModel.GetToken();
+
         ViewModel.ContextTemplate = Context;
 
-        var allTemplates = await ViewModel.GetTemplates();
+        allTemplates = await ViewModel.GetTemplates();
         allTemplates.ForEach(template =>
         {
             if (!TemplatesMenuList.Any(x => x.Code.Equals(template.Code)))
@@ -271,8 +279,13 @@ public partial class Index
         }
     }
 
-
     public void Save()
+    {
+
+    }
+
+
+    public void Sign()
     {
         List<MedicalRegisterItem> medicalItems = new();
 
@@ -282,21 +295,28 @@ public partial class Index
             {
                 if (template.Template != null)
                 {
-                    var DatosPlantilla = template.Template.GetValue();
-                    if (DatosPlantilla != null)
+
+                    if (template.Template.Validate())
                     {
-                        medicalItems.Add(new MedicalRegisterItem()
+                        template.Template.BuildText();
+
+                        var DatosPlantilla = template.Template.GetValue();
+                        if (DatosPlantilla != null)
                         {
-                            History = 12345,
-                            Episode = 199,
-                            Program = template.Code,
-                            Version = Convert.ToDecimal(template.Version),
-                            LocationCode = "URG",
-                            SpecialtyCode = "MED",
-                            RegisterDate = DateTime.Now,
-                            UserCode = "vfranco",
-                            ComponentsValues = DatosPlantilla as Dictionary<string, string>
-                        });
+                            medicalItems.Add(new MedicalRegisterItem()
+                            {
+                                History = 12345,
+                                Episode = 199,
+                                Program = template.Code,
+                                Version = Convert.ToDecimal(template.Version),
+                                LocationCode = "URG",
+                                SpecialtyCode = "MED",
+                                RegisterDate = DateTime.Now,
+                                UserCode = "vfranco",
+                                ComponentsValues = DatosPlantilla as Dictionary<string, string>,
+                                TemplateText = template.Template.FormLayoutViewModel.DynamicTemplate.TemplateProperties.Text
+                            });
+                        }
                     }
                 }
             });
@@ -315,5 +335,26 @@ public partial class Index
     public async Task History()
     {
         SearchMode = true;
+        HistoriList = await ViewModel.Load();
+    }
+
+    public void EditNote(MedicalRegisterItem note)
+    {
+        Templates = new List<DynamicTemplateItem>();
+        OnClickMenu(new DynamicFormItem()
+        {
+            Code = note.Program,
+            Description = "xxxx",
+            Name = "xxxx",
+            Version = note.Version
+        });
+
+        var xx = HistoriList.FirstOrDefault(x => x.Program.Equals(note.Program) && x.Version.Equals(note.Version));
+        if (Templates[0].Template != null)
+            Templates[0].Template.SetValue(xx.ComponentsValues);
+    }
+
+    public void SignNote(MedicalRegisterItem note)
+    {
     }
 }
