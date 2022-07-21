@@ -134,6 +134,8 @@ public partial class Index
     {
         SearchMode = false;
 
+        Templates = new List<DynamicTemplateItem>();
+
         if (!Templates.Any(x => x.Code.Equals(item.Code)))
         {
             DynamicTemplateItem newDynamicTemplateItem = new DynamicTemplateItem()
@@ -141,7 +143,7 @@ public partial class Index
                 Code = item.Code,
                 Description = item.Name,
                 IsVisible = true,
-                Version = item.Version.ToString()
+                Version = item.Version.ToString(),
             };
 
             SelectedTemplate = newDynamicTemplateItem;
@@ -295,7 +297,6 @@ public partial class Index
             {
                 if (template.Template != null)
                 {
-
                     if (template.Template.Validate())
                     {
                         template.Template.BuildText();
@@ -326,6 +327,8 @@ public partial class Index
 
         SearchMode = true;
         HistoriList = await ViewModel.Load();
+        Templates = new List<DynamicTemplateItem>();
+        SelectedTemplate = null;
         StateHasChanged();
     }
 
