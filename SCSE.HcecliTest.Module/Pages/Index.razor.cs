@@ -285,7 +285,7 @@ public partial class Index
     }
 
 
-    public void Sign()
+    public async Task Sign()
     {
         List<MedicalRegisterItem> medicalItems = new();
 
@@ -323,6 +323,10 @@ public partial class Index
         }
 
         ViewModel.Save(medicalItems);
+
+        SearchMode = true;
+        HistoriList = await ViewModel.Load();
+        StateHasChanged();
     }
 
     public async Task Load()
