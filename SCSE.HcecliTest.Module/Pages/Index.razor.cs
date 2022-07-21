@@ -12,9 +12,20 @@ using SCSE.HcecliTest.Domain;
 using SCSE.HcecliTest.ViewModels;
 using System.Linq;
 using Markdig;
+using SCSE.Framework.Common.Components.Blz;
+using SCSE.Framework.Application.Core;
 
 public partial class Index
 {
+    /// <summary>
+    /// Injección del servicio de mensajes
+    /// </summary>
+    [Inject] MessageUIService MessageUIService { get; set; }
+
+    /// <summary>
+    /// Snackbar
+    /// </summary>
+    [Inject] ISnackbar Snackbar { get; set; }
 
     WebDynamicContext Context;
 
@@ -330,6 +341,8 @@ public partial class Index
         Templates = new List<DynamicTemplateItem>();
         SelectedTemplate = null;
         StateHasChanged();
+
+        Snackbar.Add("Guardado exitoso.", Severity.Info);
     }
 
     public async Task Load()
